@@ -138,11 +138,13 @@
                         <span class="d-flex align-items-center justify-content-center text-nowrap"><i
                                 class="bx bx-plus bx-xs me-3"></i>Add Description</span>
                     </a>
-                    <a href="#" class="btn btn-primary d-grid w-100" data-bs-toggle="modal"
+                    @can('make-payment')
+                        <a href="#" class="btn btn-primary d-grid w-100" data-bs-toggle="modal"
                         data-bs-target="#addPaymentModal">
-                        <span class="d-flex align-items-center justify-content-center text-nowrap"><i
+                                <span class="d-flex align-items-center justify-content-center text-nowrap"><i
                                 class="bx bx-dollar bx-xs me-3"></i>Make Payment</span>
-                    </a>
+                        </a>
+                    @endcan 
                 </div>
             </div> 
             

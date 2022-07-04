@@ -3,12 +3,14 @@
 namespace App\Http\Livewire\Student;
 
 use App\Models\Student;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class All extends Component
 {
-    use WithPagination;    
+    use WithPagination;  
+    use AuthorizesRequests;  
     protected $paginationTheme = 'bootstrap';
     public $column = '10', $search, $student_id;
 

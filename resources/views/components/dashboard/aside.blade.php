@@ -69,13 +69,13 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
-      <!-- Dashboard -->
+      {{-- <!-- Dashboard -->
       <li class="menu-item">
         <a href="" class="menu-link">
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
           <div data-i18n="Analytics">Dashboard</div>
         </a>
-      </li>
+      </li> --}}
     
       <!-- Student -->
       <li class="menu-header small text-uppercase"><span class="menu-header-text">Student</span></li>
@@ -97,16 +97,38 @@
       <!-- Manage -->
       <li class="menu-header small text-uppercase"><span class="menu-header-text">Manage</span></li>
 
-      <!-- Partners -->
-      <li class="menu-item {{request()->routeIs('partner.*') ? 'open active' : ''}}">
+      @can('view-partner')
+          <!-- Partners -->
+          <li class="menu-item {{request()->routeIs('partner.*') ? 'open active' : ''}}">
+            <a href="" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bxs-id-card"></i>
+              <div data-i18n="Layouts">Partners</div>
+            </a>
+
+            <ul class="menu-sub">
+                <x-dashboard.menuitem route='partner.all' name='View'/>
+                <x-dashboard.menuitem route='partner.create' name='Create new'/>      
+            </ul>
+          </li>
+      @endcan
+
+      <!-- Account -->
+      <li class="menu-item {{request()->routeIs('transaction.*') ? 'open active' : ''}}">
         <a href="" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons bx bxs-id-card"></i>
-          <div data-i18n="Layouts">Partners</div>
+          <div data-i18n="Layouts">Account</div>
         </a>
 
+      @can('view-member')
+          <!-- member -->
+          <li class="menu-item {{request()->routeIs('member.*') ? 'open active' : ''}}">
+            <a href="" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bxs-group"></i>
+              <div data-i18n="Layouts">Member</div>
+            </a>
         <ul class="menu-sub">
-            <x-dashboard.menuitem route='partner.all' name='View'/>
-            <x-dashboard.menuitem route='partner.create' name='Create new'/>      
+            <x-dashboard.menuitem route='transaction.all' name='View'/>
+            <x-dashboard.menuitem route='transaction.create' name='Create new'/>      
         </ul>
       </li>
 
@@ -118,23 +140,26 @@
           <div data-i18n="Layouts">Member</div>
         </a>
 
-        <ul class="menu-sub">
-          <x-dashboard.menuitem route='member.all' name='List'/>
-          <x-dashboard.menuitem route='member.create' name='Add new'/>              
-        </ul>
-      </li>
+            <ul class="menu-sub">
+              <x-dashboard.menuitem route='member.all' name='List'/>
+              <x-dashboard.menuitem route='member.create' name='Add new'/>              
+            </ul>
+          </li>
+      @endcan
 
       
-      <!-- Settings -->
-      <li class="menu-header small text-uppercase"><span class="menu-header-text">Settings</span></li>
+      @can('view-setting')
+          <!-- Settings -->
+          <li class="menu-header small text-uppercase"><span class="menu-header-text">Settings</span></li>
 
-      <!-- Options-->
-      <li class="menu-item">
-        <a href="cards-basic.html" class="menu-link">
-          <i class="menu-icon tf-icons bx bx-collection"></i>
-          <div data-i18n="Basic">Options</div>
-        </a>
-      </li>
+          <!-- Options-->
+          <li class="menu-item">
+            <a href="cards-basic.html" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-cog"></i>
+              <div data-i18n="Basic">Options</div>
+            </a>
+          </li>
+      @endcan
 
     </ul>
   </aside>

@@ -23,7 +23,9 @@
                     <th>Scholarship</th>
                     <th>Agreement Date</th>
                     <th>Expire Date</th>
+                @can(['update','delete'], App\Models\Partner::class)
                     <th>Action</th>
+                @endcan   
                 </x-slot>
 
                 @foreach ($partners as $partner)
@@ -36,14 +38,16 @@
                         <td><span class="badge bg-label-success me-1">{{ $partner->scholarship_offer ? 'Yes' : 'No' }}</span></td>
                         <td>{{ $partner->agreement_date }}</td>
                         <td>{{ $partner->end_date  }}</td>
-                        <td>
-                            <x-table.action>
-                                <a class="dropdown-item" href="{{ route('partner.edit', ['id'=>$partner->id]) }}"><i
-                                        class="bx bx-edit-alt me-1"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-bs-toggle="modal" wire:click='confirmDelete({{$partner->id}})' data-bs-target="#deleteConfirmation"><i
-                                        class="bx bx-trash me-1"></i> Delete</a>
-                            </x-table.action>
-                        </td>
+                        @can('update', App\Models\Partner::class)
+                            <td>
+                                <x-table.action>
+                                    <a class="dropdown-item" href="{{ route('partner.edit', ['id'=>$partner->id]) }}"><i
+                                            class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" wire:click='confirmDelete({{$partner->id}})' data-bs-target="#deleteConfirmation"><i
+                                            class="bx bx-trash me-1"></i> Delete</a>
+                                </x-table.action>
+                            </td>
+                        @endcan
                     </tr>
                 @endforeach
 

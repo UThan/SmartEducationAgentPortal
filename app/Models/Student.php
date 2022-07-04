@@ -17,7 +17,7 @@ class Student extends Model
         'coe_status'=> 'Unknown',
         'offer_status'=> 'Unknown',
     ];   
-   
+      
 
     public function payments(){
         return $this->hasMany(Payment::class);

@@ -10,6 +10,9 @@ use App\Http\Livewire\Partner\Edit as EditPartner;
 use App\Http\Livewire\member\All as AllMember;
 use App\Http\Livewire\member\Create as CreateMember;
 use App\Http\Livewire\member\Edit as EditMember;
+use App\Http\Livewire\transaction\All as AllTransaction;
+use App\Http\Livewire\transaction\Create as CreateTransaction;
+use App\Http\Livewire\transaction\Edit as EditTransaction;
 use Illuminate\Routing\RouteGroup;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\Register;
@@ -55,6 +58,13 @@ Route::middleware('auth')->group(function(){
         Route::get('/create', CreateMember::class)->name('create');
         Route::get('/edit/{id}', EditMember::class)->name('edit');
     });
+
+    Route::prefix('transaction')->name('transaction.')->group(function(){
+        Route::get('/', AllTransaction::class)->name('all');    
+        Route::get('/create', CreateTransaction::class)->name('create');
+        Route::get('/edit/{id}', EditTransaction::class)->name('edit');
+    });
+
 
     Route::get('/logout',function(){
         Auth::logout();

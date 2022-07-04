@@ -64,5 +64,10 @@ trait WithData
         true => "Yes",
         false => "No",
     ];
+
+    public $transaction_types = [
+        'Expense' => "Expense",
+        'Income' => "Income",
+    ];
     
 }

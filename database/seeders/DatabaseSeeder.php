@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             PositionSeeder::class,
             DataSeeder::class,
             SalaryTypeSeeder::class,
+            RoleSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }

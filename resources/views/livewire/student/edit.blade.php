@@ -98,7 +98,7 @@
                 <x-inlineform.radiogroup label='Application Status' name='student.application_status' :data="$application_status"/>
                 <x-inlineform.radiogroup label='Offer Status' name='student.offer_status' :data="$offer_status"/>
                 <x-inlineform.radiogroup label='COE Status' name='student.coe_status' :data="$coe_status"/>   
-                <x-inlineform.radiogroup label='Account Status' name='student.status' :data="$status"/>       
+                <x-inlineform.radiogroup label='Transaction Status' name='student.status' :data="$status"/>       
                 <div class="row justify-content-end">
                   <div class="col-sm-10">
                     <x-inlineform.submit icon='bx-save' label='Save'/>

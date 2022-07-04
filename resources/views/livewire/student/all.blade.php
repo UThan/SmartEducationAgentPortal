@@ -9,9 +9,11 @@
         </div>
 
         <x-table.searchbar>
-            <a href="{{ route('student.create') }}" class="btn btn-primary" type="button">                            
+            @can('create', App\Models\Student::class)
+                <a href="{{ route('student.create') }}" class="btn btn-primary" type="button">                            
                 <i class="bx bx-plus me-0 me-sm-2"></i>
                 <span class="d-none d-sm-inline-block">Register</span>
+            @endcan
         </x-table.searchbar>
         
         <div class="table-responsive text-nowrap">
@@ -38,11 +40,15 @@
                                 title="<i class='bx bx-heart bx-xs'></i> <span>Tooltip on bottom</span>">2</span></td>
                         <td>
                             <x-table.action>
-                                <a class="dropdown-item" href="{{ route('student.edit',['id' => $student->id ]) }}"><i
-                                        class="bx bx-edit-alt me-1"></i> Edit</a>
-                                <a class="dropdown-item" href="#" data-bs-toggle="modal" wire:click='confirmDelete({{$student->id}})' data-bs-target="#deleteConfirmation"><i
-                                        class="bx bx-trash me-1"></i> Delete</a>
                                 <a class="dropdown-item" href="{{ route('student.view',['id' => $student->id ]) }}"><i class="bx bx-show-alt me-1"></i>View</a>
+                                @can('update', $student)
+                                    <a class="dropdown-item" href="{{ route('student.edit',['id' => $student->id ]) }}"><i
+                                    class="bx bx-edit-alt me-1"></i> Edit</a>
+                                @endcan
+                                @can('delete', $student)
+                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" wire:click='confirmDelete({{$student->id}})' data-bs-target="#deleteConfirmation"><i
+                                    class="bx bx-trash me-1"></i> Delete</a>
+                                @endcan
                             </x-table.action>
                         </td>
                     </tr>
